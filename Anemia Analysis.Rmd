@@ -1,0 +1,61 @@
+---
+title: "Anemia Analysis"
+author: "Randa Lakab"
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+---
+
+`{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readr)
+library(dplyr)
+library(ggplot2)
+
+1. Charger les données
+
+# Charger le fichier anemia.csv (dans le même dossier)
+data <- read_csv("anemia.csv")
+
+# Aperçu rapide
+head(data)
+
+2. Structure des données
+
+# Noms de colonnes
+colnames(data)
+
+# Résumé statistique
+summary(data)
+
+3. Hémoglobine selon diagnostic (boxplot)
+
+ggplot(data, aes(x = factor(Result), y = Hemoglobin, fill = factor(Result))) +
+  geom_boxplot() +
+  labs(
+    title = "Hémoglobine selon diagnostic",
+    x = "Anémie (0 = Non, 1 = Oui)",
+    y = "Taux d'hémoglobine (g/dL)"
+  )
+
+4. Relation entre MCV et Hémoglobine (scatter plot)
+
+ggplot(data, aes(x = MCV, y = Hemoglobin)) +
+  geom_point(color = "darkred", alpha = 0.7) +
+  geom_smooth(method = "lm", se = FALSE, color = "blue") +
+  labs(
+    title = "Relation entre MCV et Hémoglobine",
+    x = "MCV (fL)",
+    y = "Taux d'hémoglobine (g/dL)"
+  )
+
+5. Conclusion
+
+Cette analyse montre que les patients atteints d’anémie (Result = 1) présentent des niveaux d’hémoglobine plus faibles que les autres.
+On observe également une tendance légère entre le volume globulaire moyen (MCV) et le taux d’hémoglobine, ce qui pourrait être approfondi par une régression ou une classification.
+
+
+---
+
+Projet réalisé avec R, ggplot2 et R Markdown par Randa Lakab.
