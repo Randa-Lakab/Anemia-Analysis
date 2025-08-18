@@ -36,3 +36,10 @@ This project explores a small medical dataset about anemia and analyzes the rela
 4. Run analyse_anemie.R to generate the plots
 5. Or open anemia_analysis.Rmd and click Knit → HTML
 
+## ⭐ Next Improvements
+
+- Add more visualizations (e.g., histograms of MCH, MCV distribution).
+- Compare results with a larger anemia dataset.
+- Automate the report generation with R scripts.
+
+
